@@ -6,6 +6,7 @@ Utilizing Cloud One traditional deployment method + Prefixes
 
 In this scenario we will be using a folder strucutre in the Landing Bucket, this structure can be leveraged for scanning decision.
 
+Files will only be scanned when they are uploaded to the SCAN bucket, objects will be scanned if they are moved between folders
 
 Folder Structure:
   - Scan
@@ -48,3 +49,24 @@ Fourth Scenario, upload a malicious file to the Bucket, Scan Folder
   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/5fbdf772-5de8-4c39-992b-754b9d932512)
   - Tag Section:
   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ada174d-727b-4cc8-865b-b96900e3828c)
+
+Foifth Scenario, upload a malicious file to the Bucket main, move the file to the Scan Folder
+  - A malicious eicar file
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d00c2a95-1db6-4478-adc4-c82f32d7206a)
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/67f92fd3-b276-4032-b0e6-2e6bcd590b65)
+  - Object Metadata
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/555bcdba-316e-4738-afee-7e0a5cf58386)
+  - Tag Section:
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/21c7adf2-4e9b-4eb3-ba0c-f470b740254d)
+  - Moving the file:
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/085acaaa-b86b-4184-934c-306df0c89986)
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/ecd35fe8-31be-41bc-b083-ac4966a8cbdc)
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/330b38ca-7c73-4fc4-b4cd-66c625290524)
+  - Object Metadata
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/8864c23c-b17e-4553-99c0-d3e3c224e06a)
+  - Tag Section:
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d5580bdf-f247-4877-9f59-b85874ee1bf1)
+
+ # How to deploy
+
+ 
