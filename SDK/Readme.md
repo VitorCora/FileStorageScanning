@@ -68,10 +68,16 @@ npm run client -- (-f #FILEPATH or -u $URL) --pml (true or false) --smt (true or
 Where:
 
 -f #FILEPATH is the path to the file to be scanned
+
 -u #URL is the URL or pre-signed URL
+
 -pml is the predictive machine learning (recomended to always be set to "true")
+
 -smt is the parameter for the smart feedback (recommended to always be set to "true")
+
   Trend Micro™ Smart Feedback provides continuous communication between Trend Micro products as well as the company's 24/7 threat research centers and technologies. Each new threat identified through a single customer's routine reputation check automatically updates   all Trend Micro threat databases, blocking any subsequent customer encounters of a given threat.
+  
+  REference:
   https://docs.trendmicro.com/all/ent/sps/v3.2/en-us/sps_olh/Smart-Feedback.html
 
 It is only needed -f #FILEPATH or -u $URL, in the case of both being supplied the scanner will give preference to the -f #FILEPATH
