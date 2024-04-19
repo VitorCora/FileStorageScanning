@@ -1,297 +1,134 @@
-# FileStorageScanning
+# API/SDK Scanning
 
-# First Architecture
+This scenario is focused in covering on demand malware scan.
 
-Utilizing Cloud One traditional deployment method + Prefixes
+You will have the capability to scan files using a simple CLI invocation or one of our many SDKs.
 
-In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
+This method does not requires you to integrate your Cloud account to Vision One.
 
-Files will only be scanned when they are uploaded to the SCAN bucket, objects will be scanned if they are moved between folders
+- How to create the Vision One API that will be used on the
+  - Log into Vision One.
+  - On the Vision One Console go to the **Administration** Page and select the **User Roles** Service:
+    - Click on **+Add Role**
+    - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/507febba-7b19-4d7c-b45f-4cdc1daf6556)
+    - On the **Create Custom Role** Page
+    - Under General Information:
+      - Choose a **Role Name**: eg. v1fs-sdk-role.
+      - Add a **Role Description**: eg. Role to enable SaaS malware scan to be performed
+      - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/5ee998c8-744a-4eea-ad4d-b284d6064cfb)
+    - Under Permission, select only
+      -   Under **Security Functions**
+        - Expand **Cloud Security**
+          - Expand **File Security**
+            - Tick View
+            - Tick Run file scan via SDK
+            - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/1149bb2e-ff99-41c5-865b-eb100d13e8e7)
+    - Click **Save**
+  - On the Vision One Console go to the **Administration** Page and select the **API Keys** Service:
+    - Click on **Add API Key**
+    - Choose a **Name**: eg. v1fs-sdk-api.
+    - Choose the recently created role: eg. v1fs-sdk-api.
+    - Set an **Expiration time**
+    - Choose a **Description** (Optional): eg. API Key to enable SaaS malware scan to be performed 
+      - Add a **Role Description**: eg. API Key to enable SaaS malware scan to be performed
+      - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/888e4704-b4f9-4a21-8d9f-5bfe6bf1ed22)
+      - Click **Add**
+  - Copy the given API and store it properly 
 
-Prefixes (Folder Structure):
-  - Scan
-  - Do-NOT-Scan
-  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/046219a7-7562-49d8-992f-042676b8691d)
+- How access the SaaS file Scan (SDK/API) results and guides:
+  - Log into Vision One.
+  - On the Vision One Console go to the **Cloud Security** Page and select the **File Storage** Service:
+  - Click on the SDK Icon
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/c82f22ff-b679-4bab-8646-100a9f1593c8)
+  - https://portal.xdr.trendmicro.com/index.html#/app/file-security
+  - For the results go to the **Scan Activity** Tab
+  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/56f4c454-0974-416f-8e1a-4c12c5eeaf68)
 
-## Add Flow and architecture here
------ 
+# Using the NodeJS sdk
 
+This scenario is focused in covering on demand malware scan by using the NodeJS SDK.
 
-## First Scenario, upload a clean image to the Bucket main.
-  - A clean picture of my dog
-  - ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/78d7a86d-f13d-453e-8805-a75212d5451f)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/c6a7d376-edbd-4ac9-80e9-f7a75500e22e)
-  - Object metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/299949f7-2e94-49ea-acb6-72e257257b4e)
-  - Tag Section
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3b2de559-ce0c-41bf-ae98-f98c75ff25c6)
+Reference:
+https://github.com/trendmicro/tm-v1-fs-nodejs-sdk
 
-----
+Based on the following documentation I changed the SDK to run with files and Pre-signed URLs or download Links:
 
-## Second Scenario, upload a clean image to the Bucket, Do-Not-Scan Prefix (Folder):
-  -  A clean picture of my dog
-  -  ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e1427357-a2a9-4fe3-b2a8-676ffb36e33b)
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/aad7abea-28dd-465f-8915-46a983d48350)
-  -  Object Metadata
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/bc5670a7-bc2f-4936-bba7-155cdbe9d818)
-  -  Tag Section
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/615e6b6e-7506-4dfe-9847-5d65dc74f2ed)
+Reference:
+https://github.com/VitorCora/tm-v1-fs-nodejs-sdk
 
------
+You can fork this documentation and change it to your specific use case.
 
-## Third Scenario, upload a clean image to the Bucket, Scan Prefix (Folder):
-  - A clean picture of my dog
-  - ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/101f5914-1598-4bc3-b092-6c660fa971a1)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/448ffa83-07d0-4a05-836c-8c8e94212fc7)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/a3a9d9b6-40c6-4269-abfa-054dba220637)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3428f011-da99-4c17-81a5-a0d937ca40f9)
+This guide will be using the example package called fScan.ts, that live in the following link:
+https://github.com/VitorCora/tm-v1-fs-nodejs-sdk/blob/main/examples/cli/src/fScan.ts
 
-----
+This NodeJS program after compiled will run with the following command line:
 
-## Fourth Scenario, upload a malicious file to the Bucket, Scan Prefix (Folder):
-  - A malicious eicar file
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/0f9d3fe6-d0b9-4bb9-bd0f-e44c8cef4ca0)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/448ffa83-07d0-4a05-836c-8c8e94212fc7)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/5fbdf772-5de8-4c39-992b-754b9d932512)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ada174d-727b-4cc8-865b-b96900e3828c)
+npm run client -- (-f #FILEPATH or -u $URL) --pml (true or false) --smt (true or false)
 
-----
+Where:
 
-## Fifth Scenario, upload a malicious file to the Bucket main, move the file to the Scan Prefix (Folder):
-  - A malicious eicar file
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d00c2a95-1db6-4478-adc4-c82f32d7206a)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/67f92fd3-b276-4032-b0e6-2e6bcd590b65)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/555bcdba-316e-4738-afee-7e0a5cf58386)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/21c7adf2-4e9b-4eb3-ba0c-f470b740254d)
-  - Moving the file:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/085acaaa-b86b-4184-934c-306df0c89986)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/ecd35fe8-31be-41bc-b083-ac4966a8cbdc)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/330b38ca-7c73-4fc4-b4cd-66c625290524)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/8864c23c-b17e-4553-99c0-d3e3c224e06a)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d5580bdf-f247-4877-9f59-b85874ee1bf1)
+-f #FILEPATH is the path to the file to be scanned
+-u #URL is the URL or pre-signed URL
+-pml is the predictive machine learning (recomended to always be set to "true")
+-smt is the parameter for the smart feedback (recommended to always be set to "true")
+  Trend Micro™ Smart Feedback provides continuous communication between Trend Micro products as well as the company's 24/7 threat research centers and technologies. Each new threat identified through a single customer's routine reputation check automatically updates   all Trend Micro threat databases, blocking any subsequent customer encounters of a given threat.
+  https://docs.trendmicro.com/all/ent/sps/v3.2/en-us/sps_olh/Smart-Feedback.html
 
------
-## Results on the Cloud One Console
+It is only needed -f #FILEPATH or -u $URL, in the case of both being supplied the scanner will give preference to the -f #FILEPATH
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/497875d3-760d-498d-98e5-ba2c324b89b1)
-
-
- ## How to deploy
-
-Under construction
-
-# Second Architecture
-
-Utilizing Cloud One/Vision One Account achitecture
-
-In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
-
-Files will only be scanned when they are uploaded to the SCAN prefix of the specified buckets, objects will be scanned if they are moved between folders
-
-Bucket/Buckets to be scanned:
-
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/cff4a335-48c3-438d-aa00-870575c1c32e)
-
-----
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ab1628a-9e4d-40d1-8943-d061f2f7e148)
-
-You will also need to enable 
-
- ## How to Deploy
-
- - Log into Cloud One
- - Generate an API Key
-   - Go to the Administration page
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/c2e13c2b-1bf5-4833-88aa-b0cfa628437d)
-   - Look for the API Keys Section:
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/bc6e411e-cc6b-4c6d-89be-7f0a79c3361b)
-   - In the API Keys Section, Click on **New**
-   - Give it an **Alias** and select **Full Access** for Role and then Click **Next**
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/012b19e9-32ab-45df-9af8-c279f7cf534f)
-   - Copy the API Key
+## Installing the SDK
   
-   - Acquire the CreateStackURL:
-     -  Method: GET
-     -  Endpoint:  https://filestorage.{region}.cloudone.trendmicro.com/api/templates/{provider-type}
-       - region = Your Cloud One region {us-1, eu-1, ...}
-       - provider-type =  aws-account-scanner
-      - Headers:
-        - Authorization: ApiKey {YOUR API KEY}
-        -  Api-Version: v1
-     -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/04e7ce64-9b0b-4ebb-a18c-dc442115f3ee)
-  - Expected Response:
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/2228066c-9a42-4422-92a0-8b6067e45f3b)
+  1. To install the SDK's Node.js package, run the following commands in your Node.js application folder.
 
-- Run the Cloudformation URL
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3627f8aa-4503-42de-9174-d2bb22054181)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/9bec28f0-48e4-4059-963d-75de1a0d6d14)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/b2219bc2-a3ea-4e81-a240-a510bbe0f788)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e246bd52-216b-458e-92f8-bd5c6042f30e)
+  npm install file-security-sdk
 
+  2. On the host:
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/2a04439f-8f53-4239-8340-1a78964a59e1)
+  git clone https://github.com/VitorCora/tm-v1-fs-nodejs-sdk.git
 
+  cd cli/
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/46bec4ce-276e-479a-b9d2-bd7e7c05ff32)
+  export TM_AM_SERVER_ADDR={YOUR_VISION_ONE_API_KEY_REGION}
+  export TM_AM_AUTH_KEY={YOUR_VISION_ONE_API_KEY}
 
-# FileStorageScanning
+  Where:
 
-# First Architecture
-
-Utilizing Cloud One traditional deployment method + Prefixes
-
-In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
-
-Files will only be scanned when they are uploaded to the SCAN bucket, objects will be scanned if they are moved between folders
-
-Prefixes (Folder Structure):
-  - Scan
-  - Do-NOT-Scan
-  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/046219a7-7562-49d8-992f-042676b8691d)
-
-## Add Flow and architecture here
------ 
-
-
-## First Scenario, upload a clean image to the Bucket main.
-  - A clean picture of my dog
-  - ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/78d7a86d-f13d-453e-8805-a75212d5451f)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/c6a7d376-edbd-4ac9-80e9-f7a75500e22e)
-  - Object metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/299949f7-2e94-49ea-acb6-72e257257b4e)
-  - Tag Section
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3b2de559-ce0c-41bf-ae98-f98c75ff25c6)
-
-----
-
-## Second Scenario, upload a clean image to the Bucket, Do-Not-Scan Prefix (Folder):
-  -  A clean picture of my dog
-  -  ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e1427357-a2a9-4fe3-b2a8-676ffb36e33b)
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/aad7abea-28dd-465f-8915-46a983d48350)
-  -  Object Metadata
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/bc5670a7-bc2f-4936-bba7-155cdbe9d818)
-  -  Tag Section
-  -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/615e6b6e-7506-4dfe-9847-5d65dc74f2ed)
-
------
-
-## Third Scenario, upload a clean image to the Bucket, Scan Prefix (Folder):
-  - A clean picture of my dog
-  - ![Robin RG](https://github.com/VitorCora/FileStorageScanning/assets/59590152/101f5914-1598-4bc3-b092-6c660fa971a1)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/448ffa83-07d0-4a05-836c-8c8e94212fc7)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/a3a9d9b6-40c6-4269-abfa-054dba220637)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3428f011-da99-4c17-81a5-a0d937ca40f9)
-
-----
-
-## Fourth Scenario, upload a malicious file to the Bucket, Scan Prefix (Folder):
-  - A malicious eicar file
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/0f9d3fe6-d0b9-4bb9-bd0f-e44c8cef4ca0)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/448ffa83-07d0-4a05-836c-8c8e94212fc7)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/5fbdf772-5de8-4c39-992b-754b9d932512)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ada174d-727b-4cc8-865b-b96900e3828c)
-
-----
-
-## Fifth Scenario, upload a malicious file to the Bucket main, move the file to the Scan Prefix (Folder):
-  - A malicious eicar file
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d00c2a95-1db6-4478-adc4-c82f32d7206a)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/67f92fd3-b276-4032-b0e6-2e6bcd590b65)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/555bcdba-316e-4738-afee-7e0a5cf58386)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/21c7adf2-4e9b-4eb3-ba0c-f470b740254d)
-  - Moving the file:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/085acaaa-b86b-4184-934c-306df0c89986)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/ecd35fe8-31be-41bc-b083-ac4966a8cbdc)
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/330b38ca-7c73-4fc4-b4cd-66c625290524)
-  - Object Metadata
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/8864c23c-b17e-4553-99c0-d3e3c224e06a)
-  - Tag Section:
-  - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d5580bdf-f247-4877-9f59-b85874ee1bf1)
-
------
-## Results on the Cloud One Console
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/497875d3-760d-498d-98e5-ba2c324b89b1)
-
-
- ## How to deploy
-
-Under construction
-
-# Second Architecture
-
-Utilizing Cloud One/Vision One Account achitecture
-
-In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
-
-Files will only be scanned when they are uploaded to the SCAN prefix of the specified buckets, objects will be scanned if they are moved between folders
-
-Bucket/Buckets to be scanned:
-
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/cff4a335-48c3-438d-aa00-870575c1c32e)
-
-----
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ab1628a-9e4d-40d1-8943-d061f2f7e148)
-
-You will also need to enable 
-
- ## How to Deploy
-
- - Log into Cloud One
- - Generate an API Key
-   - Go to the Administration page
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/c2e13c2b-1bf5-4833-88aa-b0cfa628437d)
-   - Look for the API Keys Section:
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/bc6e411e-cc6b-4c6d-89be-7f0a79c3361b)
-   - In the API Keys Section, Click on **New**
-   - Give it an **Alias** and select **Full Access** for Role and then Click **Next**
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/012b19e9-32ab-45df-9af8-c279f7cf534f)
-   - Copy the API Key
+   
+  {YOUR_VISION_ONE_API_KEY_REGION} Will be your Vision One region, if you have a US console use **us-east-1**
+  {YOUR_VISION_ONE_API_KEY} Will be the API Key created previously **(eg. the copied value from v1fs-sdk-api)**
   
-   - Acquire the CreateStackURL:
-     -  Method: GET
-     -  Endpoint:  https://filestorage.{region}.cloudone.trendmicro.com/api/templates/{provider-type}
-       - region = Your Cloud One region {us-1, eu-1, ...}
-       - provider-type =  aws-account-scanner
-      - Headers:
-        - Authorization: ApiKey {YOUR API KEY}
-        -  Api-Version: v1
-     -  ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/04e7ce64-9b0b-4ebb-a18c-dc442115f3ee)
-  - Expected Response:
-   - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/2228066c-9a42-4422-92a0-8b6067e45f3b)
+  If you want to set up the Logging Level, set the following variable:
 
-- Run the Cloudformation URL
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/3627f8aa-4503-42de-9174-d2bb22054181)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/9bec28f0-48e4-4059-963d-75de1a0d6d14)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/b2219bc2-a3ea-4e81-a240-a510bbe0f788)
-- ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e246bd52-216b-458e-92f8-bd5c6042f30e)
+  export TM_AM_LOG_LEVEL={LOG_LEVEL}
+
+  Where:
+
+  {LOG_LEVEL} Valid values are **OFF, FATAL, ERROR, WARN, INFO**, and **DEBUG**; default level is OFF
+
+Install your dependencies:
+
+npm install
+
+Build the example, setting your Source to fScan.ts(Scan files or PresignedURLs or downloadable files):
+
+SOURCE=fScan.ts npm run build # cli
+
+Feed the files or Pre-signed URLs that will be scanned:
+
+npm run client -- (-f #FILEPATH or -u $URL) --pml (true or false) --smt (true or false)
+
+*** Testing an eicar .png
+
+  - ![image](https://github.com/VitorCora/tm-v1-fs-nodejs-sdk/assets/59590152/32231f0f-c8b6-4bfa-b8b6-c269a020bc26)
+
+*** Testing a random eicar.txt
+
+   - ![image](https://github.com/VitorCora/tm-v1-fs-nodejs-sdk/assets/59590152/e970949e-5a27-4140-8095-a5063197202a)
 
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/2a04439f-8f53-4239-8340-1a78964a59e1)
+*** Testing a presigned URL
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/f478f13b-02ba-4aad-a1a6-3412d190b640)
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/46bec4ce-276e-479a-b9d2-bd7e7c05ff32)
-
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/74edfa1d-e933-44ed-a053-b5661260efac)
+![image](https://github.com/VitorCora/tm-v1-fs-nodejs-sdk/assets/59590152/af0b8702-7208-40a0-8237-7566e673b61d)
 
 
 
