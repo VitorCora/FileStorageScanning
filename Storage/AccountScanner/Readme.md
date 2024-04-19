@@ -1,8 +1,8 @@
 # FileStorageScanning
 
-# Second Architecture
+# New Architecture
 
-Utilizing Cloud One/Vision One Account achitecture
+Utilizing Cloud Vision One Account achitecture
 
 In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
 
