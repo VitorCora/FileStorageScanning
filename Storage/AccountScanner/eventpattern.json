@@ -1,0 +1,18 @@
+{ "detail-type": 
+  ["Object Created"], 
+  "source": ["aws.s3"], 
+  "detail": { 
+    "bucket": { 
+      "name": [{ 
+        "prefix": "yourbucket-to-scan" 
+      }] },
+    "object": { 
+      "key": [{
+        "prefix": "scan" 
+      }] 
+    } 
+  }, 
+  "resources": [{
+    "anything-but": ["your-bucket-not-to-scan-1", "your-bucket-not-to-scan-2", "your-bucket-not-to-scan-3"] 
+  }] 
+}
