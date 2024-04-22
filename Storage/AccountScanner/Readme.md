@@ -2,16 +2,16 @@
 
 # New Architecture
 
-Utilizing Cloud Vision One Account achitecture
+Utilizing Vision One Account achitecture
 
-In this scenario we will be using a Prefixes (folder strucutre) in the Landing Bucket, this structure can be leveraged for scanning decision.
+In this scenario we will be using Prefixes to decide the files to be scanned.
 
-Files will only be scanned when they are uploaded to the SCAN prefix of the specified buckets, objects will be scanned if they are moved between folders
+Files will only be scanned when they are uploaded to the chosen bucket and its key (name) has the SCAN prefix.
 
 Bucket/Buckets to be scanned:
 
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/a30e7286-9728-4d63-af0b-a04403a95c7b)
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/cff4a335-48c3-438d-aa00-870575c1c32e)
 
 ----
 
