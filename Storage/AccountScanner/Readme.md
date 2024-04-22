@@ -80,11 +80,23 @@ I changed the Image name to scanRobin RG.jpeg and Robin RG.jpeg to test the diff
 ## Results
 
 Upload of the Image named scanRobin RG.jpeg
+
+Object information:
+
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d1d3794d-d941-4884-be2d-3eabef774a0b)
+
+Object TAG metadata:
+
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/760cd8ad-135e-4c39-bfc3-313a845ae0e1)
 
-Upload of the Image named Robin RG.jpeg
+Upload of the Image named Robin RG.jpeg:
+
+Object TAG metadata:
+
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/497c8bca-b174-4de4-973e-b65e6a575fe5)
+
+Object information:
+
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/a1ff1303-7742-440f-b592-1f294e47ace4)
 
 
