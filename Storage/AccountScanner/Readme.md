@@ -33,6 +33,15 @@ You will also need to enable
    - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/b077c6d5-262b-4e8f-afe4-08fd30eb3ca5)
    - Click in Lauch
    - On AWS run the stack
+    - At the Parameters page, fill the following:
+     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/42a335a7-f208-4107-ab28-26e0fd58e085)
+     - FileSecurityStorageObjectCreatedEventFilter
+        "bucket": {"name": [{"prefix": "yourbucket-to-scan"}]},"object": {"key": [{"prefix": "scan"}]}},  
+      - or
+        "object": {"key": [{"prefix": "scan"}]}}
+      - Where:
+       - **{yourbucket-to-scan}** is the name of the bucket to be scanned
+       - **{scan}** is the prefix of the objects that you want to scan
    - After the stack integration is done, just wait and it should quickly appear on your V1 console
    - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/0a698e00-bfda-4732-a698-665b0bfdeefc)
    - Now go to the **Cloud Security Page** and Select **File Security**
@@ -48,27 +57,45 @@ You will also need to enable
 
 
 
-{
-  "detail-type": ["Object Created"],
-  "source": ["aws.s3"],
-  "detail": {
-    "bucket": {
-      "name": [{
-        "prefix": "v1csa-ea-bucket"
-      }]
-    },
-    "object": {
+{ "detail-type": 
+
+  ["Object Created"], 
+  
+  "source": ["aws.s3"], 
+  
+  "detail": { 
+  
+    "bucket": { 
+    
+      "name": [{ 
+      
+        "prefix": "yourbucket-to-scan" 
+        
+      }] 
+     
+     },
+    
+    "object": { 
+      
       "key": [{
-        "prefix": "scan"
-      }]
-    }
-  },
+        
+        "prefix": "scan" 
+      
+      }] 
+    
+    } 
+  }, 
+  
   "resources": [{
-    "anything-but": ["arn:aws:s3:::v1csa-ea-bucket-t2", "arn:aws:s3:::v1csa-ea-bucket-quarantine", "arn:aws:s3:::v1csa-ea-bucket-not-scan"]
-  }]
+    
+    "anything-but": ["your-bucket-not-to-scan-1", "your-bucket-not-to-scan-2", "your-bucket-not-to-scan-3"] 
+  
+  }] 
+
 }
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/4add4a2b-1249-4fde-982d-28ceb475c130)
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/59bab939-a1ad-4dd8-8002-a93fe1884e81)
+
 
 ## Tests
 
