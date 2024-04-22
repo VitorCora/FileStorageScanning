@@ -124,6 +124,28 @@ Object information:
 
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/a1ff1303-7742-440f-b592-1f294e47ace4)
 
+EICARs criados para testar a engine:
+
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/81c977eb-24da-4176-9b37-0de75c32581f)
+
+EICAR - scaneicar.png
+
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/1c2b4d9a-16d7-4591-927d-505921b2f9b8)
+
+Object information:
+
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/1beb60eb-40eb-4a62-b00d-b7d19d82443c)
+
+Object TAG metadata:
+
+
+
+
+EICAR - eicar.org
+
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/9ce30096-dad6-4b7a-81b1-4e7b78471fa5)
+
+
 
 ## Notes
 
