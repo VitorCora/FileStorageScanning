@@ -44,8 +44,10 @@ Bucket/Buckets to be scanned:
     - On Iventory, select **AWS** and expand your newly integrated AWS Account
     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e86d7771-1c73-480a-b51b-03e52c0ea851)
     - Tick the Bucket that you want to protect and click on **Change Status** **Turn on EventBridge**
-     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/4696ffad-0a20-4572-862b-977569fbd60e)
-     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/827d3117-885f-42c8-955b-245c01739ef3)
+     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/2470c30e-7be6-4a70-99aa-397459153307)
+
+     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/db2b0564-f22d-4580-861e-c3d2bbd83f92)
+
 
 
   ## AWS Event Bridge
