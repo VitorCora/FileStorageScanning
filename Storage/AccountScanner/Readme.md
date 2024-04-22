@@ -15,10 +15,6 @@ Bucket/Buckets to be scanned:
 
 ----
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/7ab1628a-9e4d-40d1-8943-d061f2f7e148)
-
-You will also need to enable 
-
  ## How to Deploy
 
  - Log into Vision One
