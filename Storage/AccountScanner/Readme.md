@@ -134,11 +134,12 @@ EICAR - scaneicar.png
 
 Object information:
 
-![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/1beb60eb-40eb-4a62-b00d-b7d19d82443c)
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/48ca38e3-0571-4516-b5a0-d2b9e48c457c)
+
 
 Object TAG metadata:
 
-
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/d2040084-1770-4091-a3e7-32301ab93e68)
 
 
 EICAR - eicar.org
