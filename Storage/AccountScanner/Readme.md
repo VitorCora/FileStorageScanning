@@ -154,6 +154,7 @@ After extensive tests, EventBridge is still firing for object prefix, even with 
 
 
 
+![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e20cdd00-d8fa-4e60-98a1-4d9e7cdff648)
 
 
 
