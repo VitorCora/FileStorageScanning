@@ -54,44 +54,27 @@ Bucket/Buckets to be scanned:
 
 
 
-
+```
 { "detail-type": 
-
   ["Object Created"], 
-  
   "source": ["aws.s3"], 
-  
   "detail": { 
-  
     "bucket": { 
-    
       "name": [{ 
-      
         "prefix": "yourbucket-to-scan" 
-        
       }] 
-     
      },
-    
     "object": { 
-      
       "key": [{
-        
         "prefix": "scan" 
-      
       }] 
-    
     } 
   }, 
-  
   "resources": [{
-    
     "anything-but": ["your-bucket-not-to-scan-1", "your-bucket-not-to-scan-2", "your-bucket-not-to-scan-3"] 
-  
-  }] 
-
+  }]
 }
-
+```
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/59bab939-a1ad-4dd8-8002-a93fe1884e81)
 
 
@@ -146,15 +129,25 @@ EICAR - eicar.org
 
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/9ce30096-dad6-4b7a-81b1-4e7b78471fa5)
 
+## Optional - Using Prefixes - folders
 
+**Under Construction**
 
-## Notes
+## Optional - Quarantine 
 
-After extensive tests, EventBridge is still firing for object prefix, even with the use of "object": {"key": "anything-but":"string"} , "object": {"key": [{"anything-but": {"prefix": "string"}}]} and many other combinations.
+**Under Construction**
+
+   - On AWS run the stack
+    - At the Parameters page, fill the following:
+     - ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e2a4a7ab-1aba-4cb1-b3c9-0399a2061dbf)
 
 
 
 ![image](https://github.com/VitorCora/FileStorageScanning/assets/59590152/e20cdd00-d8fa-4e60-98a1-4d9e7cdff648)
 
+
+## Notes
+
+After extensive tests, EventBridge is still firing for object prefix, even with the use of "object": {"key": "anything-but":"string"} , "object": {"key": [{"anything-but": {"prefix": "string"}}]} and many other combinations.
 
 
